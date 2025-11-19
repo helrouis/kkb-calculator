@@ -155,12 +155,15 @@ export default function BillSplitter() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 via-red-50 to-yellow-100 p-6">
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-2xl shadow-xl p-8">
-          <div className="flex items-center justify-center mb-6">
-            <Receipt className="w-10 h-10 text-indigo-600 mr-2" />
-            <h1 className="text-3xl font-bold text-gray-800">Bill Splitter</h1>
+          <div className="flex flex-col items-center justify-center mb-6">
+            <div className="flex items-center">
+              <Receipt className="w-10 h-10 text-blue-600 mr-2" />
+              <h1 className="text-3xl font-bold text-gray-800">KKB Calculator</h1>
+            </div>
+            <p className="text-sm text-gray-600 mt-1 italic">Kanya-Kanyang Bayad</p>
           </div>
 
           {/* Currency Selector */}
@@ -189,7 +192,7 @@ export default function BillSplitter() {
                 onChange={(e) => setPersonName(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Person name"
-                className="flex-1 min-w-[120px] px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
+                className="flex-1 min-w-[120px] px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
               />
               <input
                 type="text"
@@ -197,7 +200,7 @@ export default function BillSplitter() {
                 onChange={(e) => setItemName(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Item name"
-                className="flex-1 min-w-[120px] px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
+                className="flex-1 min-w-[120px] px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
               />
               <div className="relative w-32">
                 <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 font-medium">
@@ -210,12 +213,12 @@ export default function BillSplitter() {
                   onKeyPress={handleKeyPress}
                   placeholder="0.00"
                   step="0.01"
-                  className="w-full pl-8 pr-2 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
+                  className="w-full pl-8 pr-2 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
                 />
               </div>
               <button
                 onClick={addItem}
-                className="px-4 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                className="px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
                 <Plus className="w-5 h-5" />
               </button>
@@ -230,7 +233,7 @@ export default function BillSplitter() {
                 <select
                   value={serviceChargeType}
                   onChange={(e) => setServiceChargeType(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none bg-white"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none bg-white"
                 >
                   <option value="fixed">Fixed Amount</option>
                   <option value="percent">Percentage</option>
@@ -254,7 +257,7 @@ export default function BillSplitter() {
                     onChange={(e) => setServiceChargeValue(e.target.value)}
                     placeholder="0"
                     step={serviceChargeType === 'fixed' ? '0.01' : '0.1'}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
                   />
                 </div>
               </div>
@@ -295,7 +298,7 @@ export default function BillSplitter() {
           {Object.keys(personTotals).length > 0 && (
             <div className="mb-6 border-t pt-6">
               <div className="flex items-center mb-3">
-                <Users className="w-6 h-6 text-green-600 mr-2" />
+                <Users className="w-6 h-6 text-red-600 mr-2" />
                 <h2 className="text-lg font-semibold text-gray-700">Add Shared Items</h2>
               </div>
               
@@ -306,7 +309,7 @@ export default function BillSplitter() {
                     value={sharedItemName}
                     onChange={(e) => setSharedItemName(e.target.value)}
                     placeholder="Shared item name"
-                    className="flex-1 min-w-[200px] px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none"
+                    className="flex-1 min-w-[200px] px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none"
                   />
                   <div className="relative w-32">
                     <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 font-medium">
@@ -318,27 +321,27 @@ export default function BillSplitter() {
                       onChange={(e) => setSharedItemPrice(e.target.value)}
                       placeholder="0.00"
                       step="0.01"
-                      className="w-full pl-8 pr-2 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none"
+                      className="w-full pl-8 pr-2 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none"
                     />
                   </div>
                   <button
                     onClick={addSharedItem}
                     disabled={selectedPeople.length === 0}
-                    className="px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+                    className="px-4 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
                   >
                     <Plus className="w-5 h-5" />
                   </button>
                 </div>
 
                 {/* People selector */}
-                <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                <div className="bg-red-50 p-4 rounded-lg border border-red-200">
                   <div className="flex items-center justify-between mb-3">
                     <label className="text-sm font-medium text-gray-700">
                       Split between:
                     </label>
                     <button
                       onClick={toggleSelectAll}
-                      className="text-sm text-green-600 hover:text-green-700 font-medium"
+                      className="text-sm text-red-600 hover:text-red-700 font-medium"
                     >
                       {selectedPeople.length === Object.keys(personTotals).length ? 'Deselect All' : 'Select All'}
                     </button>
@@ -350,8 +353,8 @@ export default function BillSplitter() {
                         onClick={() => togglePersonSelection(person)}
                         className={`px-4 py-2 rounded-lg border-2 transition-colors ${
                           selectedPeople.includes(person)
-                            ? 'bg-green-600 text-white border-green-600'
-                            : 'bg-white text-gray-700 border-gray-300 hover:border-green-400'
+                            ? 'bg-red-600 text-white border-red-600'
+                            : 'bg-white text-gray-700 border-gray-300 hover:border-red-400'
                         }`}
                       >
                         {person}
@@ -369,7 +372,7 @@ export default function BillSplitter() {
                     {sharedItems.map((item) => (
                       <div
                         key={item.id}
-                        className="flex items-center justify-between bg-green-50 p-3 rounded-lg border border-green-200"
+                        className="flex items-center justify-between bg-red-50 p-3 rounded-lg border border-red-200"
                       >
                         <div className="flex-1">
                           <span className="text-gray-700 font-medium">{item.name}</span>
@@ -401,8 +404,8 @@ export default function BillSplitter() {
               <h3 className="text-lg font-semibold text-gray-700">Split by Person</h3>
               
               {Object.entries(personTotals).map(([person, data]) => (
-                <div key={person} className="bg-indigo-50 rounded-lg p-5 border-2 border-indigo-200">
-                  <h4 className="text-lg font-bold text-indigo-900 mb-3">{person}</h4>
+                <div key={person} className="bg-blue-50 rounded-lg p-5 border-2 border-blue-200">
+                  <h4 className="text-lg font-bold text-blue-900 mb-3">{person}</h4>
                   
                   {/* Individual items */}
                   {data.items.length > 0 && (
@@ -419,8 +422,8 @@ export default function BillSplitter() {
 
                   {/* Shared items */}
                   {data.sharedItems.length > 0 && (
-                    <div className="space-y-2 mb-3 pb-3 border-b border-indigo-200">
-                      <div className="text-xs font-semibold text-green-600 uppercase flex items-center">
+                    <div className="space-y-2 mb-3 pb-3 border-b border-blue-200">
+                      <div className="text-xs font-semibold text-red-600 uppercase flex items-center">
                         <Users className="w-3 h-3 mr-1" />
                         Shared Items
                       </div>
@@ -433,7 +436,7 @@ export default function BillSplitter() {
                     </div>
                   )}
                   
-                  <div className="border-t border-indigo-300 pt-3 space-y-2">
+                  <div className="border-t border-blue-300 pt-3 space-y-2">
                     <div className="flex justify-between text-sm">
                       <span className="text-gray-700">Individual Subtotal:</span>
                       <span className="text-gray-800 font-medium">{currency}{data.subtotal.toFixed(2)}</span>
@@ -448,9 +451,9 @@ export default function BillSplitter() {
                       <span className="text-gray-700">Service Charge (proportional):</span>
                       <span className="text-gray-800 font-medium">{currency}{data.serviceCharge.toFixed(2)}</span>
                     </div>
-                    <div className="flex justify-between border-t border-indigo-300 pt-2">
-                      <span className="text-lg font-semibold text-indigo-900">Total:</span>
-                      <span className="text-xl font-bold text-indigo-600">{currency}{data.total.toFixed(2)}</span>
+                    <div className="flex justify-between border-t border-blue-300 pt-2">
+                      <span className="text-lg font-semibold text-blue-900">Total:</span>
+                      <span className="text-xl font-bold text-blue-600">{currency}{data.total.toFixed(2)}</span>
                     </div>
                   </div>
                 </div>
