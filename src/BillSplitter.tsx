@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Receipt, Plus, Trash2, Percent, Users, Download, Link2, Check } from 'lucide-react';
+import { Plus, Trash2, Percent, Users, Download, Link2, Check } from 'lucide-react';
 import html2canvas from 'html2canvas';
 
 interface Item {
